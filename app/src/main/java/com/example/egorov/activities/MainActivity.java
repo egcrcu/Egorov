@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
             View dialogView = getLayoutInflater().inflate(R.layout.custom_dialog, null);
             builder.setView(dialogView);
             tryAgainDialog = builder.create();
+            tryAgainDialog.setCanceledOnTouchOutside(false);
 
             TextView errorTextView = dialogView.findViewById(R.id.error_message);
             errorTextView.setText("Произошла ошибка при загрузке данных, проверьте подключение к сети.");
