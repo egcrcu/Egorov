@@ -1,4 +1,4 @@
-![photo_2024-02-12_01-22-04](https://github.com/egcrcu/egorov/assets/79853609/ad6a519b-5eaa-474d-8b91-0dd893f16b39)
-![photo_2024-02-12_01-21-59](https://github.com/egcrcu/egorov/assets/79853609/aa70fe2a-ee4e-427e-897d-6cf3f2d2551f)
-![photo_2024-02-12_01-21-56](https://github.com/egcrcu/egorov/assets/79853609/fe5ba100-402a-4aa4-a4d9-00ce23b12a60)
-![photo_2024-02-12_01-21-49](https://github.com/egcrcu/egorov/assets/79853609/65e785ac-cdec-4510-99ff-cdb9a9eacb13)
+![photo_2024-02-12_01-26-09](https://github.com/egcrcu/egorov/assets/79853609/228e7d55-7c8a-492b-8a2b-d0c3d8c5562e)
+![photo_2024-02-12_01-26-06](https://github.com/egcrcu/egorov/assets/79853609/12401f20-c013-4bf1-9f12-d3a1c563eaac)
+![photo_2024-02-12_01-26-03](https://github.com/egcrcu/egorov/assets/79853609/62d2d1f8-07cb-4f83-a5ed-f52ef685503a)
+![photo_2024-02-12_01-26-00](https://github.com/egcrcu/egorov/assets/79853609/268b42a0-d72a-47db-9f9d-959f0a96d47c)
