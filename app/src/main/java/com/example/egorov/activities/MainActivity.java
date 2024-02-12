@@ -175,11 +175,9 @@ public class MainActivity extends AppCompatActivity {
     private void filterMovies(String query) {
         ArrayList<Movie> filteredList = new ArrayList<>();
         if (query.isEmpty()) {
-            // Если запрос пустой, отображаем полный список фильмов
             filteredList.addAll(movieList);
         } else {
             for (Movie movie : movieList) {
-                // Здесь реализуйте вашу логику фильтрации, например, поиск по названию фильма
                 if (movie.getName().toLowerCase().contains(query.toLowerCase())) {
                     filteredList.add(movie);
                 }
@@ -193,24 +191,10 @@ public class MainActivity extends AppCompatActivity {
         } else {
             movieAdapter.setMovieList(filteredList);
             TextView noResultsTextView = findViewById(R.id.noResultsTextView);
-            noResultsTextView.setVisibility(View.GONE); // Скрываем TextView
-            movieRecyclerView.setVisibility(View.VISIBLE); // Показываем RecyclerView
+            noResultsTextView.setVisibility(View.GONE);
+            movieRecyclerView.setVisibility(View.VISIBLE);
         }
     }
-
-
-    private void showNoResultsDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Ничего не найдено")
-                .setPositiveButton("OK", (dialog, which) -> {
-                    // Закрываем диалоговое окно
-                    dialog.dismiss();
-                })
-                .create()
-                .show();
-    }
-
-
 
 }
 
