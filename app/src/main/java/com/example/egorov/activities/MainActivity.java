@@ -12,6 +12,7 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     private final NetworkUtils networkUtils = new NetworkUtils();
     private AlertDialog tryAgainDialog;
     private ProgressBar progressBar;
+    private RecyclerView movieRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +62,25 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle(spannableString);
 
-        RecyclerView movieRecyclerView = findViewById(R.id.movieRecyclerView);
+        movieRecyclerView = findViewById(R.id.movieRecyclerView);
         movieRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         movieAdapter = new MovieAdapter(MainActivity.this, movieList);
         movieRecyclerView.setAdapter(movieAdapter);
+
+        SearchView searchView = findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterMovies(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterMovies(newText);
+                return true;
+            }
+        });
 
         executorService.execute(() -> {
             try {
@@ -154,6 +171,46 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void filterMovies(String query) {
+        ArrayList<Movie> filteredList = new ArrayList<>();
+        if (query.isEmpty()) {
+            // Если запрос пустой, отображаем полный список фильмов
+            filteredList.addAll(movieList);
+        } else {
+            for (Movie movie : movieList) {
+                // Здесь реализуйте вашу логику фильтрации, например, поиск по названию фильма
+                if (movie.getName().toLowerCase().contains(query.toLowerCase())) {
+                    filteredList.add(movie);
+                }
+            }
+        }
+
+        if (filteredList.isEmpty()) {
+            TextView noResultsTextView = findViewById(R.id.noResultsTextView);
+            noResultsTextView.setVisibility(View.VISIBLE);
+            movieRecyclerView.setVisibility(View.GONE);
+        } else {
+            movieAdapter.setMovieList(filteredList);
+            TextView noResultsTextView = findViewById(R.id.noResultsTextView);
+            noResultsTextView.setVisibility(View.GONE); // Скрываем TextView
+            movieRecyclerView.setVisibility(View.VISIBLE); // Показываем RecyclerView
+        }
+    }
+
+
+    private void showNoResultsDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Ничего не найдено")
+                .setPositiveButton("OK", (dialog, which) -> {
+                    // Закрываем диалоговое окно
+                    dialog.dismiss();
+                })
+                .create()
+                .show();
+    }
+
+
 
 }
 
