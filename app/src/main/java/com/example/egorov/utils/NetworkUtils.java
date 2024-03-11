@@ -14,7 +14,7 @@ public class NetworkUtils {
     private final static String popularFilms = "/api/v2.2/films/top";
     private final static String film = "/api/v2.2/films/";
     private final static String popularFilmsType = "TOP_100_POPULAR_FILMS";
-    private final static String apiKey = "e30ffed0-76ab-4dd6-b41f-4c9da2b2735b";
+    private final static String apiKey = "API_KEY";
 
     public URL generateURL() throws MalformedURLException {
         Uri buildUri = Uri.parse(basedUrl + popularFilms)
